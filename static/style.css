@@ -1,0 +1,61 @@
+/*
+    This file provides minimal custom CSS.
+    Bootstrap handles the majority of the styling for a modern look.
+    You can add specific overrides here if needed.
+*/
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa; /* Light background for the whole page */
+    color: #343a40; /* Darker text color */
+}
+
+/* Optional: Custom styles for flash messages if you want them to stand out more */
+.alert {
+    margin-top: 15px;
+}
+
+/* Ensure navbar links are visible and styled correctly within dark navbar */
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+/* Specific button styling for contrast if default Bootstrap isn't enough */
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* Card styling for consistent look */
+.card {
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    border-radius: calc(0.5rem - 1px) calc(0.5rem - 1px) 0 0;
+    padding: 1rem; /* More padding for header */
+}
+
+/* Center card content in certain layouts */
+.card-body {
+    padding: 1.25rem;
+}
+
+/* Specific styling for forms within cards */
+.form-control {
+    border-radius: 0.25rem;
+}
+
+.btn {
+    border-radius: 0.25rem;
+}

@@ -273,15 +273,16 @@ def user_dashboard():
     cur.execute(available_lots_query, query_params)
     available_lots = cur.fetchall()
 
-    # Get user's current reservation (if any)
+    # Get user's current reservations (all active ones)
     cur.execute("""
         SELECT r.id, pl.name, ps.id, r.in_time, r.out_time, r.cost, ps.status
         FROM reservations r
         JOIN parking_spots ps ON r.spot_id = ps.id
         JOIN parking_lots pl ON ps.lot_id = pl.id
         WHERE r.user_id = ? AND r.out_time IS NULL
+        ORDER BY r.in_time DESC
     """, (user_id,))
-    current_reservation = cur.fetchone()
+    current_reservations = cur.fetchall()
 
     # Get user's parking history
     cur.execute("""
@@ -311,7 +312,7 @@ def user_dashboard():
     return render_template('user_dashboard.html', 
                            username=session['user'],
                            available_lots=available_lots,
-                           current_reservation=current_reservation,
+                           current_reservations=current_reservations,
                            parking_history=parking_history,
                            total_cost=total_cost,
                            total_parking_hours=total_parking_hours,
@@ -328,13 +329,6 @@ def reserve_spot(lot_id):
     user_id = session.get('user_id')
     conn = sqlite3.connect(DB_NAME)
     cur = conn.cursor()
-
-    # Check if user already has an active reservation
-    cur.execute("SELECT * FROM reservations WHERE user_id = ? AND out_time IS NULL", (user_id,))
-    if cur.fetchone():
-        flash('You already have an active reservation. Please release your current spot first.', 'warning')
-        conn.close()
-        return redirect(url_for('user_dashboard'))
 
     # Find the first available spot in the chosen lot
     cur.execute("SELECT id FROM parking_spots WHERE lot_id = ? AND status = 'A' LIMIT 1", (lot_id,))

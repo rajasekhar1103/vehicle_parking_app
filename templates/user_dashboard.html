@@ -43,12 +43,17 @@
                         <h5 class="mb-0">Current Parking Status</h5>
                     </div>
                     <div class="card-body">
-                        {% if current_reservation %}
-                            <p><strong>Parked at:</strong> Lot {{ current_reservation[1] }} (Spot ID: {{ current_reservation[2] }})</p>
-                            <p><strong>In Time:</strong> {{ current_reservation[3] }}</p>
-                            <form action="{{ url_for('release_spot', reservation_id=current_reservation[0]) }}" method="post">
-                                <button type="submit" class="btn btn-warning w-100">Release Spot</button>
-                            </form>
+                        {% if current_reservations %}
+                            <h6>You have {{ current_reservations|length }} active reservation{{ 's' if current_reservations|length > 1 else '' }}:</h6>
+                            {% for reservation in current_reservations %}
+                                <div class="border rounded p-3 mb-3 bg-light">
+                                    <p><strong>Parked at:</strong> Lot {{ reservation[1] }} (Spot ID: {{ reservation[2] }})</p>
+                                    <p><strong>In Time:</strong> {{ reservation[3] }}</p>
+                                    <form action="{{ url_for('release_spot', reservation_id=reservation[0]) }}" method="post" class="d-inline">
+                                        <button type="submit" class="btn btn-warning btn-sm">Release Spot</button>
+                                    </form>
+                                </div>
+                            {% endfor %}
                         {% else %}
                             <p>You currently have no active parking reservations.</p>
                         {% endif %}

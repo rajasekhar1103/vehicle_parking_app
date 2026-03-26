@@ -4,15 +4,72 @@
     You can add specific overrides here if needed.
 */
 
+/* Dark mode support */
+[data-bs-theme="dark"] {
+    --bs-body-bg: #212529;
+    --bs-body-color: #f8f9fa;
+}
+
+[data-bs-theme="dark"] body {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+[data-bs-theme="dark"] .card {
+    background-color: #343a40;
+    border-color: #495057;
+}
+
+[data-bs-theme="dark"] .card-header {
+    background-color: #495057;
+    border-color: #6c757d;
+    color: #f8f9fa;
+}
+
+[data-bs-theme="dark"] .navbar-dark {
+    background-color: #1a1a1a !important;
+    border-bottom: 1px solid #495057;
+}
+
+[data-bs-theme="dark"] .btn-outline-secondary {
+    color: #adb5bd;
+    border-color: #adb5bd;
+}
+
+[data-bs-theme="dark"] .btn-outline-secondary:hover {
+    background-color: #adb5bd;
+    color: #212529;
+}
+
+[data-bs-theme="dark"] .form-control {
+    background-color: #495057;
+    border-color: #6c757d;
+    color: #f8f9fa;
+}
+
+[data-bs-theme="dark"] .form-control:focus {
+    background-color: #495057;
+    border-color: #0d6efd;
+    color: #f8f9fa;
+}
+
+[data-bs-theme="dark"] .alert {
+    background-color: #495057;
+    border-color: #6c757d;
+    color: #f8f9fa;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8f9fa; /* Light background for the whole page */
     color: #343a40; /* Darker text color */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Optional: Custom styles for flash messages if you want them to stand out more */
 .alert {
     margin-top: 15px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 /* Ensure navbar links are visible and styled correctly within dark navbar */
@@ -38,12 +95,14 @@ body {
 .card {
     border: none;
     border-radius: 0.5rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .card-header {
     border-bottom: 1px solid rgba(0,0,0,.125);
     border-radius: calc(0.5rem - 1px) calc(0.5rem - 1px) 0 0;
     padding: 1rem; /* More padding for header */
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 /* Center card content in certain layouts */
@@ -54,8 +113,25 @@ body {
 /* Specific styling for forms within cards */
 .form-control {
     border-radius: 0.25rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .btn {
     border-radius: 0.25rem;
+}
+
+/* Dark mode toggle button */
+.theme-toggle {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }

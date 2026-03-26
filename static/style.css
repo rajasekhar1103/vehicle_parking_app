@@ -1,137 +1,334 @@
 /*
-    This file provides minimal custom CSS.
-    Bootstrap handles the majority of the styling for a modern look.
-    You can add specific overrides here if needed.
+    Futuristic and Simple UI Design for Vehicle Parking App
+    Features: Glassmorphism, gradients, smooth animations, modern typography
 */
 
-/* Dark mode support */
+/* Import futuristic font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* CSS Variables for consistent theming */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --dark-bg: #0a0a0a;
+    --dark-card: rgba(255, 255, 255, 0.05);
+    --dark-border: rgba(255, 255, 255, 0.1);
+    --light-bg: #f8f9fa;
+    --light-card: rgba(255, 255, 255, 0.9);
+    --text-light: #ffffff;
+    --text-dark: #1a1a1a;
+    --glow-primary: 0 0 20px rgba(102, 126, 234, 0.3);
+    --glow-secondary: 0 0 20px rgba(245, 87, 108, 0.3);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode support with futuristic theme */
 [data-bs-theme="dark"] {
-    --bs-body-bg: #212529;
-    --bs-body-color: #f8f9fa;
+    --bs-body-bg: var(--dark-bg);
+    --bs-body-color: var(--text-light);
 }
 
 [data-bs-theme="dark"] body {
-    background-color: var(--bs-body-bg);
-    color: var(--bs-body-color);
+    background: var(--dark-bg);
+    color: var(--text-light);
+    background-image:
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.1) 0%, transparent 50%);
 }
 
 [data-bs-theme="dark"] .card {
-    background-color: #343a40;
-    border-color: #495057;
+    background: var(--dark-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--dark-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 [data-bs-theme="dark"] .card-header {
-    background-color: #495057;
-    border-color: #6c757d;
-    color: #f8f9fa;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--dark-border);
+    color: var(--text-light);
 }
 
 [data-bs-theme="dark"] .navbar-dark {
-    background-color: #1a1a1a !important;
-    border-bottom: 1px solid #495057;
+    background: rgba(10, 10, 10, 0.95) !important;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--dark-border);
 }
 
 [data-bs-theme="dark"] .btn-outline-secondary {
     color: #adb5bd;
-    border-color: #adb5bd;
+    border-color: var(--dark-border);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 [data-bs-theme="dark"] .btn-outline-secondary:hover {
-    background-color: #adb5bd;
-    color: #212529;
+    background: var(--accent-gradient);
+    color: white;
+    border-color: transparent;
+    box-shadow: var(--glow-primary);
 }
 
 [data-bs-theme="dark"] .form-control {
-    background-color: #495057;
-    border-color: #6c757d;
-    color: #f8f9fa;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--dark-border);
+    color: var(--text-light);
+    backdrop-filter: blur(10px);
 }
 
 [data-bs-theme="dark"] .form-control:focus {
-    background-color: #495057;
-    border-color: #0d6efd;
-    color: #f8f9fa;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #4facfe;
+    color: var(--text-light);
+    box-shadow: var(--glow-primary);
 }
 
 [data-bs-theme="dark"] .alert {
-    background-color: #495057;
-    border-color: #6c757d;
-    color: #f8f9fa;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--dark-border);
+    color: var(--text-light);
+    backdrop-filter: blur(10px);
 }
 
+/* Light mode styling */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa; /* Light background for the whole page */
-    color: #343a40; /* Darker text color */
-    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--light-bg);
+    color: var(--text-dark);
+    transition: var(--transition);
+    line-height: 1.6;
+    font-weight: 400;
 }
 
-/* Optional: Custom styles for flash messages if you want them to stand out more */
-.alert {
-    margin-top: 15px;
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-
-/* Ensure navbar links are visible and styled correctly within dark navbar */
-.navbar-dark .navbar-nav .nav-link {
-    color: rgba(255, 255, 255, 0.75);
-}
-
-.navbar-dark .navbar-nav .nav-link:hover {
-    color: rgba(255, 255, 255, 1);
-}
-
-/* Specific button styling for contrast if default Bootstrap isn't enough */
-.btn-danger {
-    background-color: #dc3545;
-    border-color: #dc3545;
-}
-.btn-danger:hover {
-    background-color: #c82333;
-    border-color: #bd2130;
-}
-
-/* Card styling for consistent look */
 .card {
     border: none;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    border-radius: 16px;
+    transition: var(--transition);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
 .card-header {
-    border-bottom: 1px solid rgba(0,0,0,.125);
-    border-radius: calc(0.5rem - 1px) calc(0.5rem - 1px) 0 0;
-    padding: 1rem; /* More padding for header */
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    border-bottom: none;
+    border-radius: 16px 16px 0 0 !important;
+    padding: 1.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: var(--transition);
 }
 
-/* Center card content in certain layouts */
 .card-body {
-    padding: 1.25rem;
+    padding: 2rem;
 }
 
-/* Specific styling for forms within cards */
-.form-control {
-    border-radius: 0.25rem;
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-
+/* Modern Button Styling */
 .btn {
-    border-radius: 0.25rem;
+    border-radius: 12px;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    transition: var(--transition);
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+    background: var(--primary-gradient);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-outline-secondary {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--text-dark);
+}
+
+.btn-outline-secondary:hover {
+    background: var(--secondary-gradient);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--glow-secondary);
+}
+
+.btn-danger {
+    background: var(--secondary-gradient);
+    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+}
+
+.btn-danger:hover {
+    background: var(--secondary-gradient);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
+}
+
+/* Form Controls */
+.form-control {
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 1rem;
+    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.form-control:focus {
+    border-color: #4facfe;
+    box-shadow: var(--glow-primary);
+    background: white;
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+/* Navbar Styling */
+.navbar-dark {
+    background: rgba(10, 10, 10, 0.95) !important;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--dark-border);
+    transition: var(--transition);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Alert Styling */
+.alert {
+    margin-top: 1rem;
+    border-radius: 12px;
+    border: none;
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
 }
 
 /* Dark mode toggle button */
 .theme-toggle {
-    background: none;
-    border: none;
-    color: inherit;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--dark-border);
+    color: var(--text-light);
     font-size: 1.2rem;
     cursor: pointer;
     padding: 0.5rem;
-    border-radius: 0.25rem;
-    transition: background-color 0.3s ease;
+    border-radius: 12px;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
 }
 
 .theme-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background: var(--accent-gradient);
+    box-shadow: var(--glow-primary);
+    transform: scale(1.05);
+}
+
+/* Table Styling */
+.table {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table thead th {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    font-weight: 600;
+    padding: 1rem;
+}
+
+.table tbody tr {
+    transition: var(--transition);
+}
+
+.table tbody tr:hover {
+    background: rgba(102, 126, 234, 0.05);
+}
+
+/* Chart Container */
+.chart-container {
+    position: relative;
+    margin: auto;
+    height: 300px;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .card-header {
+        padding: 1.25rem;
+        font-size: 1rem;
+    }
+}
+
+/* Loading Animation */
+@keyframes shimmer {
+    0% { background-position: -200px 0; }
+    100% { background-position: calc(200px + 100%) 0; }
+}
+
+.loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200px 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-gradient);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-gradient);
 }
